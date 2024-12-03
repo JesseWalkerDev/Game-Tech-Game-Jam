@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
 	public float groundDrag = 0.92f;
 	public float gravityForce = 25f;
 	public int maxJumpTime = 15;
+	public int gravityReverseCoolDown;
+	private bool reverseGravity = false;
 	
+	public int gravityReverseTime;
 	private int jumpTime = 0;
 	private bool jumping = false;
 	private bool grounded = false;
@@ -41,7 +44,11 @@ public class PlayerController : MonoBehaviour
 		// Jump
 		if (Input.GetKey(KeyCode.Space) && (grounded || jumping))
 		{
-			rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+			if (reverseGravity)
+				rigidBody.velocity = new Vector2(rigidBody.velocity.x, -jumpForce);
+			else
+				rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+			
 			if (grounded)
 				jumpTime = 0;
 			else
@@ -52,7 +59,10 @@ public class PlayerController : MonoBehaviour
 			jumping = false;
 		
 		// Gravity
-		rigidBody.AddForce(Vector2.down * gravityForce);
+		if (reverseGravity)
+			rigidBody.AddForce(Vector2.up * gravityForce);
+		else
+			rigidBody.AddForce(Vector2.down * gravityForce);
 	}
 	
 	void OnCollisionStay2D(Collision2D collision)
@@ -60,9 +70,14 @@ public class PlayerController : MonoBehaviour
         grounded = false;
 		foreach (ContactPoint2D contact in collision.contacts)
         {
-			if (contact.normal.y >= 0.5)
-                grounded = true;
+			if (reverseGravity)
+				if (contact.normal.y < 0.5)
+					grounded = true;
+			else
+				if (contact.normal.y > 0.5)
+					grounded = true;
 		}
+		grounded = true;
 	}
 	
 	void OnCollisionExit2D(Collision2D collision)
@@ -73,6 +88,14 @@ public class PlayerController : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.CompareTag("Hazard"))
+		{
 			rigidBody.position = Vector2.zero;
+			rigidBody.velocity = Vector2.zero;
+		}
+		else if (collider.CompareTag("Gravity Toggle") && gravityReverseTime <= 0)
+		{
+			reverseGravity = !reverseGravity;
+			gravityReverseTime = gravityReverseCoolDown;
+		}
 	}
 }
