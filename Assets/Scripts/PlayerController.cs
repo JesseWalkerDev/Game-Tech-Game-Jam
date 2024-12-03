@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 8f;
 	public float groundDrag = 0.92f;
 	public float gravityForce = 0.7f;
-	public float maxFallSpeed = 10f;
+	public float maxFallSpeed = 16f;
 	public int maxJumpTime = 15;
 	public int gravityReverseCoolDown;
 	public int gravityReverseTime;

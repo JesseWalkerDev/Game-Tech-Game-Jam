@@ -53,6 +53,7 @@ MonoBehaviour:
   jumpForce: 8
   groundDrag: 0.92
   gravityForce: 0.7
+  maxFallSpeed: 16
   maxJumpTime: 15
   gravityReverseCoolDown: 0
   gravityReverseTime: 0
