@@ -52,8 +52,10 @@ MonoBehaviour:
   maxSpeed: 6
   jumpForce: 8
   groundDrag: 0.92
-  gravityForce: 25
+  gravityForce: 0.7
   maxJumpTime: 15
+  gravityReverseCoolDown: 0
+  gravityReverseTime: 0
 --- !u!50 &3416996030132660166
 Rigidbody2D:
   serializedVersion: 4

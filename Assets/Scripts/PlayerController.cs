@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
 	public float maxSpeed = 6f;
 	public float jumpForce = 8f;
 	public float groundDrag = 0.92f;
-	public float gravityForce = 25f;
+	public float gravityForce = 0.7f;
+	public float maxFallSpeed = 10f;
 	public int maxJumpTime = 15;
 	public int gravityReverseCoolDown;
-	private bool reverseGravity = false;
-	
 	public int gravityReverseTime;
+	
+	
+	private bool reverseGravity = false;
 	private int jumpTime = 0;
 	private bool jumping = false;
 	private bool grounded = false;
@@ -60,9 +62,9 @@ public class PlayerController : MonoBehaviour
 		
 		// Gravity
 		if (reverseGravity)
-			rigidBody.AddForce(Vector2.up * gravityForce);
+			rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Min(maxFallSpeed, rigidBody.velocity.y + gravityForce));
 		else
-			rigidBody.AddForce(Vector2.down * gravityForce);
+			rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Max(-maxFallSpeed, rigidBody.velocity.y - gravityForce));
 	}
 	
 	void OnCollisionStay2D(Collision2D collision)
@@ -91,9 +93,11 @@ public class PlayerController : MonoBehaviour
 		{
 			rigidBody.position = Vector2.zero;
 			rigidBody.velocity = Vector2.zero;
+			reverseGravity = false;
 		}
 		else if (collider.CompareTag("Gravity Toggle") && gravityReverseTime <= 0)
 		{
+			jumping = false;
 			reverseGravity = !reverseGravity;
 			gravityReverseTime = gravityReverseCoolDown;
 		}
