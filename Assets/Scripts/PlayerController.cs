@@ -69,4 +69,10 @@ public class PlayerController : MonoBehaviour
 	{
 		grounded = false;
 	}
+	
+	void OnTriggerEnter2D(Collider2D collider)
+	{
+		if (collider.CompareTag("Hazard"))
+			rigidBody.position = Vector2.zero;
+	}
 }
