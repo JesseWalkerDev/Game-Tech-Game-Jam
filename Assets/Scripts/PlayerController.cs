@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 	public int gravityReverseTime;
 	
 	
+	private Vector2 respawnPoint;
 	private bool reverseGravity = false;
 	private int jumpTime = 0;
 	private bool jumping = false;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		
+		respawnPoint = transform.position;
 	}
 
 	// Update is called once per frame
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (collider.CompareTag("Hazard"))
 		{
-			rigidBody.position = Vector2.zero;
+			rigidBody.position = respawnPoint;
 			rigidBody.velocity = Vector2.zero;
 			reverseGravity = false;
 		}
