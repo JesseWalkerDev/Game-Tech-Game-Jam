@@ -63,10 +63,13 @@ public class PlayerController : MonoBehaviour
 			jumping = false;
 		
 		// Gravity
-		if (reverseGravity)
-			rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Min(maxFallSpeed, rigidBody.velocity.y + gravityForce));
-		else
-			rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Max(-maxFallSpeed, rigidBody.velocity.y - gravityForce));
+		if (!grounded)
+		{
+			if (reverseGravity)
+				rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Min(maxFallSpeed, rigidBody.velocity.y + gravityForce));
+			else
+				rigidBody.velocity = new(rigidBody.velocity.x, Mathf.Max(-maxFallSpeed, rigidBody.velocity.y - gravityForce));
+		}
 	}
 	
 	void OnCollisionStay2D(Collision2D collision)
