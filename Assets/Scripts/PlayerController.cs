@@ -107,5 +107,11 @@ public class PlayerController : MonoBehaviour
 			reverseGravity = !reverseGravity;
 			gravityReverseTime = gravityReverseCoolDown;
 		}
+		else if (collider.CompareTag("Level End"))
+		{
+			int id = collider.gameObject.GetComponent<LevelEnd>().IdOfNextScene;
+			Debug.Log("id");
+			SceneManager.LoadScene(id);
+		}
 	}
 }
