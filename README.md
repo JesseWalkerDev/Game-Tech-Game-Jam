@@ -2,33 +2,30 @@
 MSCH-C220 Game Jam, December 2024
 
 ## Theme
-How you thought about or interpreted the theme
-
-We decided that the player should be able to reverse gravity to fit the "reverse" theme
+We decided that the player should be able to reverse gravity to fit the "reverse" theme.
 
 ## Game Play
-Objective
-Game-play instructions
-
-
+This a 2D platformer where the player must jump over obstacles and flip gravity to travel to the end of the level.
 
 ## Impediments
-Struggles or surprises you encountered during the development of the game
-
-
+Difficulty programming and adding effects, as well as difficulty using GitHub
 
 ## Implementation
-Features
-Assets, or resources used
-
-
+* Player character that can move and jump
+* Hazards that reset the player
+* Objects the player can touch to reverse gravity
+* Smooth camera that follows the player
+* Music and sound effects
+* Start and end menus
 
 ## References
 Level and player sprites by Kenny [https://kenney.nl]
+Background image by Luke100000 [https://wall.alphacoders.com/big.php?i=900628]
 
 ## Future Development
+No current plans
 
-# Created by: Group Name
-List of group members (and contributions)
-
-Jesse Walker
+# Created by: WJA
+Nicholas Wheat - Music and sound
+Jesse Walker - Programming
+Aiden Pridemore - Level design
