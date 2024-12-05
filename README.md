@@ -25,7 +25,7 @@ Background image by Luke100000 [https://wall.alphacoders.com/big.php?i=900628]
 ## Future Development
 No current plans
 
-# Created by: WJA
+# Created by: NAJ
 Nicholas Wheat - Music and sound<br>
 Jesse Walker - Programming<br>
 Aiden Pridemore - Level design
