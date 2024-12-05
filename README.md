@@ -19,13 +19,13 @@ Difficulty programming and adding effects, as well as difficulty using GitHub
 * Start and end menus
 
 ## References
-Level and player sprites by Kenny [https://kenney.nl]
+Level and player sprites by Kenny [https://kenney.nl]<br>
 Background image by Luke100000 [https://wall.alphacoders.com/big.php?i=900628]
 
 ## Future Development
 No current plans
 
 # Created by: WJA
-Nicholas Wheat - Music and sound
-Jesse Walker - Programming
+Nicholas Wheat - Music and sound<br>
+Jesse Walker - Programming<br>
 Aiden Pridemore - Level design
