@@ -5160,8 +5160,8 @@ GameObject:
   - component: {fileID: 417641151}
   - component: {fileID: 417641150}
   - component: {fileID: 417641149}
-  - component: {fileID: 417641148}
   - component: {fileID: 417641152}
+  - component: {fileID: 417641148}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5271,7 +5271,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8816,6 +8816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7189157444153495186, guid: 0f9193f269f54d24fbd206e65e16f683, type: 3}
+      propertyPath: IdOfNextScene
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7588333373233568480, guid: 0f9193f269f54d24fbd206e65e16f683, type: 3}
       propertyPath: m_Name
       value: Level End
