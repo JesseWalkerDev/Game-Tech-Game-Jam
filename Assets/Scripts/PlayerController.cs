@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +9,14 @@ public class PlayerController : MonoBehaviour
 {
 	public Rigidbody2D rigidBody;
 	public SpriteRenderer spriteRenderer;
+	public AudioSource audioSource;
 	public Sprite idle;
 	public Sprite walk1;
 	public Sprite walk2;
 	public Sprite jump;
+	public AudioClip jumpSound;
+	public AudioClip hurtSound;
+	public AudioClip portalSound;
 	
 	public float acceleration = 0.6f;
 	public float maxSpeed = 6f;
@@ -82,7 +87,10 @@ public class PlayerController : MonoBehaviour
 				rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
 			
 			if (grounded)
+			{
 				jumpTime = 0;
+				audioSource.PlayOneShot(jumpSound);
+			}
 			else
 				jumpTime ++;
 			jumping = jumpTime < maxJumpTime;
@@ -126,12 +134,14 @@ public class PlayerController : MonoBehaviour
 			rigidBody.velocity = Vector2.zero;
 			reverseGravity = false;
 			gravityReverseTime = gravityReverseCoolDown;
+			audioSource.PlayOneShot(hurtSound);
 		}
 		else if (collider.CompareTag("Gravity Toggle") && gravityReverseTime <= 0)
 		{
 			jumping = false;
 			reverseGravity = !reverseGravity;
 			gravityReverseTime = gravityReverseCoolDown;
+			audioSource.PlayOneShot(portalSound, 3.5f);
 		}
 		else if (collider.CompareTag("Level End"))
 		{
